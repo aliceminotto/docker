@@ -12,3 +12,6 @@ RUN echo 'search example.com' > /etc/resolv.conf && \
         apt-get -y update && apt-get -y --force-yes install r-base r-base-dev && \
         R -e 'install.packages("weights", repos="https://cloud.r-project.org/")'
 
+ADD  https://raw.githubusercontent.com/aliceminotto/docker/master/vel_cov.r /data/
+
+WORKDIR /data/

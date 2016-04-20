@@ -20,3 +20,4 @@ RUN echo 'search example.com' > /etc/resolv.conf && \
         cp velvet* /$DST/ && \
         rm -rf $DST/$FOLDER
 
+WORKDIR /data/
