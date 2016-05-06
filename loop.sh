@@ -15,14 +15,16 @@ do
       do
         mkdir /$DST/velvet${i}_${j}_${k}_${l}
         cd /$DST/$FOLDER
-        if [ ${k} -eq 0 ] && [ ${l} -eq 0 ];
-          then make 'MAXKMERLENGTH=${i} CATEGORIES=${j}';
-        elif [ ${k} -eq 1 ] && [ ${l} -eq 0 ];
-          then make "MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1";
-        elif [ ${k} -eq 0 ] && [ ${l} -eq 1 ];
-          then make "MAXKMERLENGTH=${i} CATEGORIES=${j} OPENMP=1";
-        else make "MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1 OPENMP=1";
-        fi
+        ls *
+        pwd
+#        if [ ${k} -eq 0 ] && [ ${l} -eq 0 ];
+#          then make 'MAXKMERLENGTH=${i} CATEGORIES=${j}';
+#        elif [ ${k} -eq 1 ] && [ ${l} -eq 0 ];
+#          then make "MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1";
+#        elif [ ${k} -eq 0 ] && [ ${l} -eq 1 ];
+#          then make "MAXKMERLENGTH=${i} CATEGORIES=${j} OPENMP=1";
+#        else make "MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1 OPENMP=1";
+ #       fi
       done
     done
   done
