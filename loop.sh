@@ -5,6 +5,7 @@ categories='2' #3 4 5 6 7 8 9 10 11 12 13 14 15'
 openmp='0'
 bigassembly='0'
 
+cd /$DST/$FOLDER
 for l in $openmp
 do
   for k in $bigassembly
@@ -13,8 +14,8 @@ do
     do	
       for i in $max_values
       do
-        mkdir /$DST/velvet${i}_${j}_${k}_${l}
-        cd /$DST/$FOLDER
+        CRT=/$DST/velvet${i}_${j}_${k}_${l}
+        mkdir $CRT
         options=''
         if [ ${k} -eq 0 ] && [ ${l} -eq 0 ];
           then options="MAXKMERLENGTH=${i} CATEGORIES=${j}";
@@ -25,6 +26,7 @@ do
         else options="MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1 OPENMP=1";
         fi
         make ${options}
+        mv velvet* $CRT/ 
       done
     done
   done
