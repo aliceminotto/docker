@@ -17,16 +17,18 @@ do
       do	
         for i in $max_values
         do
-          CRT=/$DST/velvet${i}_${j}_${k}_${l}
+          CRT=/$DST/velvet${i}_${j}_${k}_${l}_m
           mkdir $CRT
           options=''
-          if [ ${k} -eq 0 ] && [ ${l} -eq 0 ];
-            then options="MAXKMERLENGTH=${i} CATEGORIES=${j}";
-          elif [ ${k} -eq 1 ] && [ ${l} -eq 0 ];
-            then options="MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1";
-          elif [ ${k} -eq 0 ] && [ ${l} -eq 1 ];
-            then options="MAXKMERLENGTH=${i} CATEGORIES=${j} OPENMP=1";
-          else options="MAXKMERLENGTH=${i} CATEGORIES=${j} BIGASSEMBLY=1 OPENMP=1";
+          options="MAXKMERLENGTH=${i} CATEGORIES=${j}"
+          if [ ${k} -eq 1 ]; then
+            options+=" BIGASSEMBLY=1";
+          fi
+          if [ ${l} -eq 1 ]; then
+            options+=" OPENMP=1";
+          fi
+          if [ ${m} -eq 1 ]; then
+            options+=" LONGSEQUENCES=1";
           fi
           make ${options}
           mv velvet* $CRT/ 
