@@ -15,7 +15,7 @@ do
       do
         mkdir /$DST/velvet${i}_${j}_${k}_${l}
         cd /$DST/$FOLDER
-        options=""
+        options=''
         if [ ${k} -eq 0 ] && [ ${l} -eq 0 ];
           then options="MAXKMERLENGTH=${i} CATEGORIES=${j}";
         elif [ ${k} -eq 1 ] && [ ${l} -eq 0 ];
