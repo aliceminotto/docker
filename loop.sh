@@ -13,7 +13,7 @@ do
     do	
       for i in $max_values
       do
-        mkdir $DST/velvet${i}_${j}_${k}_${l}
+        mkdir /$DST/velvet${i}_${j}_${k}_${l}
       done
     done
   done
