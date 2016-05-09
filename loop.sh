@@ -17,7 +17,7 @@ do
       do	
         for i in $max_values
         do
-          CRT=/$DST/velvet${i}_${j}_${k}_${l}_m
+          CRT=/$DST/velvet${i}_${j}_${k}_${l}_${m}
           mkdir $CRT
           options=''
           options="MAXKMERLENGTH=${i} CATEGORIES=${j}"
