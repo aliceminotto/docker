@@ -41,6 +41,7 @@ elif [ $end -le 189 ]
     i=189
 else
   echo "ERROR, velvet compiled until MAXKMERLENGTH=189"
+fi
 
 echo $i
 
