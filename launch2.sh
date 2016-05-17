@@ -3,7 +3,7 @@
 MAINFLD=$1
 HASH=$2
 
-re='^[0-9]$'
+re='^[0-9]*$'
 stringa=""
 
 if [[ $HASH =~ $re ]]
@@ -15,28 +15,28 @@ if [[ $HASH =~ $re ]]
     startp=${kmers[0]}
     end=${kmers[1]}
     step=${kmers[2]}
-    for (( x=$startp; x<$end; x+=$step ))
+    for (( x=$startp; x< $end; x+=$step ))
       do
         stringa+=$MAINFLD"_"$x", "
       done
 fi
 
-if [ $end -le 31 ]
+if (( $end <= 31 ))
   then
     i=31
-elif [ $end -le 61 ]
+elif (( $end <= 61 ))
   then
     i=61
-elif [ $end -le 93 ]
+elif (( $end <= 93 ))
   then
     i=93
-elif [ $end -le 125 ]
+elif (( $end <= 125 ))
   then
     i=125
-elif [ $end -le 157 ]
+elif (( $end <= 157 ))
   then
     i=157
-elif [ $end -le 189 ]
+elif (( $end <= 189 ))
   then
     i=189
 else
