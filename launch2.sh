@@ -3,6 +3,15 @@
 MAINFLD=$1
 HASH=$2
 
+LONGSEQ="${@: -1:1}"
+OPENMP="${@: -2:1}"
+BIGASSEMBLY="${@: -3:1}"
+CATEGORIES="${@: -4:1}"
+
+echo $LONGSEQ $OPENMP $BIGASSEMBLY $CATEGORIES
+hargs=${@:1: (($#-4))}
+echo $hargs
+
 re='^[0-9]*$'
 stringa=""
 
@@ -46,7 +55,7 @@ fi
 
 echo $i
 
-/bin/velvet${i}_2_0_0_0/velveth $@; 
+/bin/velvet${i}_2_0_0_0/velveth $hargs; 
 
 gargs=(${stringa//, / })
 #echo $stringa
@@ -61,3 +70,4 @@ if (( ${#gargs[@]} > 1 ))
 else
   /bin/velvet${i}_2_0_0_0/velvetg $stringa;
 fi
+
