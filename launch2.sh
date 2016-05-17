@@ -41,11 +41,12 @@ elif (( $end <= 189 ))
     i=189
 else
   echo "ERROR, velvet compiled until MAXKMERLENGTH=189"
+  exit 1
 fi
 
 echo $i
 
-/bin/velvet31_2_0_0_0/velveth $@; 
+/bin/velvet${i}_2_0_0_0/velveth $@; 
 
 gargs=(${stringa//, / })
 #echo $stringa
@@ -55,8 +56,8 @@ if (( ${#gargs[@]} > 1 ))
     for arg in ${gargs[@]}
       do
         echo $arg
-        /bin/velvet31_2_0_0_0/velvetg $arg;
+        /bin/velvet${i}_2_0_0_0/velvetg $arg;
       done
 else
-  /bin/velvet31_2_0_0_0/velvetg $stringa;
+  /bin/velvet${i}_2_0_0_0/velvetg $stringa;
 fi
