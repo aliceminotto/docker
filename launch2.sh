@@ -53,9 +53,40 @@ else
   exit 1
 fi
 
-echo $i
+if (( $CATEGORIES > 15 ))
+  then
+    echo "ERROR, velvet compiled with max of 15 channels"
+    exit 1
+elif (( $CATEGORIES < 2 ))
+  then
+    echo "ERROR, velvet compiled with min of 2 channels"
+    exit 1
+else
+  j=$CATEGORIES
+fi
 
-/bin/velvet${i}_2_0_0_0/velveth $hargs; 
+if [ "$BIGASSEMBLY" = true ]
+  then
+    k=1
+else
+  k=0
+fi
+
+if [ "$OPENMP" = true ]
+  then 
+    l=1
+else
+  l=0
+fi
+
+if [ "$LONGSEQ" = true ]
+  then
+    m=1
+else
+  m=0
+fi
+
+/bin/velvet${i}_${j}_${k}_${l}_${m}/velveth $hargs; 
 
 gargs=(${stringa//, / })
 #echo $stringa
@@ -65,9 +96,9 @@ if (( ${#gargs[@]} > 1 ))
     for arg in ${gargs[@]}
       do
         echo $arg
-        /bin/velvet${i}_2_0_0_0/velvetg $arg;
+        /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $arg;
       done
 else
-  /bin/velvet${i}_2_0_0_0/velvetg $stringa;
+  /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $stringa;
 fi
 
