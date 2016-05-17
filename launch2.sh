@@ -45,4 +45,18 @@ fi
 
 echo $i
 
-/bin/velvet31_2_0_0_0/velveth $@; /bin/velvet31_2_0_0_0/velvetg $stringa
+/bin/velvet31_2_0_0_0/velveth $@; 
+
+gargs=(${stringa//, / })
+#echo $stringa
+#echo ${gargs[@]}
+if (( ${#gargs[@]} > 1 ))
+  then
+    for arg in ${gargs[@]}
+      do
+        echo $arg
+        /bin/velvet31_2_0_0_0/velvetg $arg;
+      done
+else
+  /bin/velvet31_2_0_0_0/velvetg $stringa;
+fi
