@@ -8,7 +8,7 @@ stringa=""
 
 if [[ $HASH =~ $re ]]
   then 
-    MAINFLD='.'
+    stringa+=$MAINFLD
   else
     kmers=(${HASH//,/ })
     start=${kmers[0]}
