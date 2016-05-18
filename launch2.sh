@@ -8,9 +8,27 @@ OPENMP="${@: -2:1}"
 BIGASSEMBLY="${@: -3:1}"
 CATEGORIES="${@: -4:1}"
 
-echo $LONGSEQ $OPENMP $BIGASSEMBLY $CATEGORIES
-hargs=${@:1: (($#-4))}
-echo $hargs
+echo option are $LONGSEQ $OPENMP $BIGASSEMBLY $CATEGORIES
+totargs=(${@:1: (($#-4))})
+echo arguments are ${totargs[@]}
+#echo ${#totargs[@]}
+echo
+
+hargs=""
+for (( i=0; i<${#totargs[@]}; i++ ))
+  do
+    echo ${totargs[${i}]}
+    if [ ${totargs[${i}]} != 'END' ]
+      then
+        hargs+=${totargs[${i}]}
+    else
+      gargs_2="${totargs[@]: ${i}+1}"
+      break
+    fi
+  done
+echo arguments for velveth are ${hargs}
+echo arguments for velvetg are ${gargs_2}
+echo
 
 re='^[0-9]*$'
 stringa=""
@@ -96,9 +114,9 @@ if (( ${#gargs[@]} > 1 ))
     for arg in ${gargs[@]}
       do
         echo $arg
-        /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $arg;
+        /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $arg ${gargs_2};
       done
 else
-  /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $stringa;
+  /bin/velvet${i}_${j}_${k}_${l}_${m}/velvetg $stringa ${gargs_2};
 fi
 
