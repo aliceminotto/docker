@@ -36,6 +36,7 @@ stringa=""
 if [[ $HASH =~ $re ]]
   then 
     stringa+=$MAINFLD
+    makedir ${stringa};
     end=$HASH
   else
     kmers=(${HASH//,/ })
@@ -45,6 +46,7 @@ if [[ $HASH =~ $re ]]
     for (( x=$startp; x< $end; x+=$step ))
       do
         stringa+=$MAINFLD"_"$x", "
+        mkdir $MAINFLD"_"$x;
       done
 fi
 
