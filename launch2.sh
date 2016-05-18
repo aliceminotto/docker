@@ -20,7 +20,7 @@ for (( i=0; i<${#totargs[@]}; i++ ))
     echo ${totargs[${i}]}
     if [ ${totargs[${i}]} != 'END' ]
       then
-        hargs+=${totargs[${i}]}
+        hargs+=${totargs[${i}]}" "
     else
       gargs_2="${totargs[@]: ${i}+1}"
       break
