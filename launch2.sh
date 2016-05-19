@@ -36,7 +36,7 @@ stringa=""
 if [[ $HASH =~ $re ]]
   then 
     stringa+=$MAINFLD
-    makedir ${stringa};
+    mkdir ${stringa};
     end=$HASH
   else
     kmers=(${HASH//,/ })
@@ -70,17 +70,17 @@ elif (( $end <= 189 ))
     i=189
 else
   echo "ERROR, velvet compiled until MAXKMERLENGTH=189"
-  exit 1
+  exit 1;
 fi
 
 if (( $CATEGORIES > 15 ))
   then
     echo "ERROR, velvet compiled with max of 15 channels"
-    exit 1
+    exit 1;
 elif (( $CATEGORIES < 2 ))
   then
     echo "ERROR, velvet compiled with min of 2 channels"
-    exit 1
+    exit 1;
 else
   j=$CATEGORIES
 fi
